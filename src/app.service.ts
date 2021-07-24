@@ -47,7 +47,7 @@ export class AppService {
   async deleteUser({ id }: { id: string }): Promise<User> {
     try {
       const user = await this.getOneById({ id });
-      return await this.userRepository.remove(user);
+      return await this.userRepository.softRemove(user);
     } catch (error) {
       throw error;
     }
