@@ -1,14 +1,18 @@
 import { MysqlConnectionOptions } from "typeorm/driver/mysql/MysqlConnectionOptions";
 
 const ormConfig: MysqlConnectionOptions = {
-    type: 'mysql',
-    database: 'typrormTestDB',
-    entities: ['dist/src/**/*.entity.ts'],
-    synchronize: true,
     host: 'localhost',
     port: 3306,
     username: 'root',
     password: 'password',
+    type: 'mysql',
+    database: 'typrormTestDB',
+    entities: ['dist/src/**/*.entity.js'],
+    synchronize: false,
+    migrations: ['dist/src/db/migrations/*.js'],
+    cli: {
+        migrationsDir: 'src/db/migrations'
+    }
 }
 
 export default ormConfig;
