@@ -3,9 +3,11 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Pet } from './pet.entity';
 
 @Entity('user')
 export class User {
@@ -23,4 +25,7 @@ export class User {
 
   @DeleteDateColumn()
   deletedAr: Date;
+
+  @OneToMany(() => Pet, (p) => p.owner)
+  pets: Pet[];
 }

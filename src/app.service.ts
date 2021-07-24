@@ -10,12 +10,14 @@ export class AppService {
   ) {}
 
   getAll(): Promise<User[]> {
-    return this.userRepository.find(); // SELECT * FROM user
+    return this.userRepository.find({
+      relations: ['pets'],
+    }); // SELECT * FROM user
   }
 
   async getOneById({ id }: { id: string }): Promise<User> {
     try {
-      const user = await this.userRepository.findOneOrFail(id); // SELECT * FROM user WHERE user.id = id;
+      const user = await this.userRepository.findOneOrFail(); // SELECT * FROM user WHERE user.id = id;
       return user;
     } catch (error) {
       throw error;
