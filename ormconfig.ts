@@ -6,7 +6,7 @@ const ormConfig: MysqlConnectionOptions = {
     username: 'root',
     password: 'password',
     type: 'mysql',
-    database: 'typrormTestDB',
+    database: 'typeormtestdb',
     entities: ['dist/src/**/*.entity.js'],
     synchronize: false,
     migrations: ['dist/src/db/migrations/*.js'],
