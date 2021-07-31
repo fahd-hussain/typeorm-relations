@@ -3,11 +3,14 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Pet } from './pet.entity';
+import { Role } from './role.entity';
 
 @Entity('user')
 export class User {
@@ -28,4 +31,8 @@ export class User {
 
   @OneToMany(() => Pet, (p) => p.owner)
   pets: Pet[];
+
+  @ManyToMany(() => Role)
+  @JoinTable()
+  roles: Role[];
 }

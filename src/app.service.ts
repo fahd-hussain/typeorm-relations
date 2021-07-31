@@ -11,7 +11,7 @@ export class AppService {
 
   getAll(): Promise<User[]> {
     return this.userRepository.find({
-      relations: ['pets'],
+      relations: ['pets', 'roles'],
     }); // SELECT * FROM user
   }
 
